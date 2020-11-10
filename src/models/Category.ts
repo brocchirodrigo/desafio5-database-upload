@@ -8,6 +8,15 @@ import {
 
 @Entity('categories')
 class Category {
+  findOne(arg0: { where: { title: string; }; }) {
+    throw new Error('Method not implemented.');
+  }
+  create(arg0: { title: string; }): any {
+    throw new Error('Method not implemented.');
+  }
+  save(transactionCategory: any) {
+    throw new Error('Method not implemented.');
+  }
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
