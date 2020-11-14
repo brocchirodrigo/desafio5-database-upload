@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
-import 'reflect-metadata';
+
 import 'dotenv/config';
+import 'reflect-metadata';
 
 import express, { Request, Response, NextFunction } from 'express';
 import 'express-async-errors';
@@ -9,6 +10,10 @@ import routes from './routes';
 import AppError from './errors/AppError';
 
 import createConnection from './database';
+
+require('dotenv').config({
+  path: process.env.NODE_ENV === 'test' ? '.env.testing' : '.env',
+});
 
 createConnection();
 const app = express();
