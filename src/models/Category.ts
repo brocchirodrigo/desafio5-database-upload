@@ -4,24 +4,21 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
 } from 'typeorm';
+
+import Transaction from './Transaction';
 
 @Entity('categories')
 class Category {
-  findOne(arg0: { where: { title: string; }; }) {
-    throw new Error('Method not implemented.');
-  }
-  create(arg0: { title: string; }): any {
-    throw new Error('Method not implemented.');
-  }
-  save(transactionCategory: any) {
-    throw new Error('Method not implemented.');
-  }
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column()
   title: string;
+
+  @OneToMany(() => Transaction, transaction => transaction.category)
+  transaction: Transaction;
 
   @CreateDateColumn()
   created_at: Date;
